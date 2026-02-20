@@ -1,0 +1,23 @@
+name: Sync Super Repo
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  trigger-super-repo-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger super repo submodule update
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.SUPER_REPO_TOKEN }}
+          repository: cashwalk/eap
+          event-type: submodule-updated
+          client-payload: |
+            {
+              "submodule_name": "EAP-Api",
+              "submodule_ref": "${{ github.sha }}",
+              "triggered_by": "${{ github.actor }}",
+              "commit_message": "${{ github.event.head_commit.message }}"
+            }
