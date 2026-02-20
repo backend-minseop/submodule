@@ -2,7 +2,7 @@ name: Sync Super Repo
 
 on:
   push:
-    branches: [master]
+    branches: [master, test]
 
 jobs:
   trigger-super-repo-update:
@@ -19,5 +19,6 @@ jobs:
               "submodule_name": "submodule",
               "submodule_ref": "${{ github.sha }}",
               "triggered_by": "${{ github.actor }}",
-              "commit_message": "${{ github.event.head_commit.message }}"
+              "commit_message": "${{ github.event.head_commit.message }}",
+              "target_branch": "${{ github.ref_name }}"
             }
