@@ -16,7 +16,7 @@ jobs:
           event-type: submodule-updated
           client-payload: |
             {
-              "submodule_name": "EAP-Api",
+              "submodule_name": "submodule",
               "submodule_ref": "${{ github.sha }}",
               "triggered_by": "${{ github.actor }}",
               "commit_message": "${{ github.event.head_commit.message }}"
