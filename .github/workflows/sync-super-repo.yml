@@ -12,7 +12,7 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.SUPER_REPO_TOKEN }}
-          repository: cashwalk/eap
+          repository: backend-minseop/super-module
           event-type: submodule-updated
           client-payload: |
             {
